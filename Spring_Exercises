@@ -1,0 +1,3 @@
+1)A Java application has a Model class ‘Art’. Further, this class has three attributes – art_id, art_title, and artist_name. You are required to create a Spring XML configuration file to create a bean entry for the Art object. 
+This object must have some property values. Also, develop a program to display the details of the Art objects.
+2)
