@@ -1,0 +1,295 @@
+Day1
+===============
+Core Java8 version
+Eclipse > mars/neon versions and intellij
+Spring 5.x version in our training
+
+Spring 5.x version is compatable with jdk1.8.
+We are going to use maven 3.x version for building the projects.
+In some projects we are going to use Gradle.
+spring 1.x,2.x,3.x,4.x,5.x,6.x
+
+latest version for spring : 6.0.7 GA release
+GA stands for general availability. means available for public use
+https://spring.io/projects/spring-framework
+https://docs.spring.io/spring-framework/docs/5.3.26/javadoc-api/
+https://spring.academy/learning-path---for certification path
+----------------------------------------------------------------------------------
+Before Spring,we are having CORBA,EJB and structs fw.
+
+Why we need to learn Spring?
+Using Spring we can design coding for below:
+1)Using spring we can learn Spring cloud which is used for Microservices/cloud development.
+2)for designing a microservice,we are going to use Springboot for which spring is prereq.
+3)used to handle Dependency injection issues,to handle business logic.....etc
+
+what is spring?
+-Spring is not a programming lang.
+-Intially spring was started as a project.Now people are calling as Spring fw.
+-Spring fw came up with so many modules.
+Below are some of the modules:
+Spring RMI,Spring ORM,Spring JDBC,Spring Vault,Spring MVC....etc
+
+Main drawback with spring is development time.We dont have necessary dev tools by default with spring.
+
+----------------------------------
+use below approach only for springboot app development :https://start.spring.io/
+
+Note: kotlin is a programming languge mainly used for Andriod development.
+-----------------
+Spring intro
+Spring RMI
+Spring Dependency injection and its ways
+AOP basics
+Spring MVC
+>>>> Servlets and jsp are mainly used for web development.
+If we want to run a Servlet Program,we need a Catalina container.or catalina is a software which knows how to run a servlet program.
+If we want to run a JSP program,we need jasper container.Jasper is a s/w which knows how to run a jsp program.
+Apache Tomcat is a web server.
+Tomcat= Catalina+Jasper+Middleware services.
+To run a Spring program we need IOC container.
+>>
+
+A obj= new A();
+class A{
+
+B b1;//we had hardcoded the classname
+}
+
+class B{
+
+public void add()//non static method
+{
+System.out.println("....Hi....");
+}
+}
+
+A is tightly coupled with B class. tightly coupled means there is huge dependency.Exa: Visnu is dependent on Srini and srini is dependent on visnu
+
+Srini can work without visnu.then it is loosely coupled.
+
+Here from above code,A class is depending on B class.Now in future if we change the classname of B to "Bat".then what will happen?
+
+To handle above scenario,industry came up with a design pattern/Solution called as "Dependency injection". 
+To work on dependency injection,we are going to use "IOC container".
+IOC---inversion of control
+In dependency injection,instead of hard coding the dependencies in code,instead we are going to inject dependencies thru some xml or properties files.
+
+Dependency injection can be implemented thru IOC container.Spring resolves the above issue with SPring IOC.
+Spring had given 2 IOC containers into the market.
+1)BeanFactory
+2)ApplicationContext3
+
+To work on Spring,mainly we need to know POJO class.
+POJO means plain old java Object.
+A class is apojo class if it follows below rules:
+1)setters and getters for variables
+2)every variable shld be private
+3)all methods shld be public.
+
+Input to your ioc container is a POJO class and a xml file.
+
+Scaffolding: Process of creating a new project structure is called as Scaffolding.
+In maven,groupid means package name,Artifactid means projectname.
+MAjority of the projects use the below naming convention for package name:
+com.<company/customername>.modulename
+Example: com.comcast.backend
+infosys
+com.infosys.backend
+>>>>>>>>>>>>>>>>>>>>
+====================================================
+Day 2:
+
+To design a spring app,we need to follow below steps:
+1)Always create maven/gradle project for Spring.
+2)Always add your dependencies in pom.xml instead of adding to buildpath.
+3)In spring,we need to maintain beans in a separate package.
+4)Make sure pom.xml file is valid and clean.
+5)Always make sure your project is pointing out to jdk1.8.
+
+Maven/gradle is build tool.
+
+MAven will read your pom.xml file while building the project.pom.xml file is a configuration file.
+
+Wen u run a desktop app,the final output will be jar file.
+Wen u run a Web app,the final output will be war file.
+Wen u run a enterprise app,the final output will be ear file.
+
+
+Spring Core----jar file
+Spring MVC-----war file
+---------------------------------------------------------------------------
+src/main/resources---->this is a place where we are going to place or create spring configuration files.
+src/main/java----->this is a place where we are going to place java files.
+src/test/java----->this is a place where we are going to create test class.
+target----->this is a place where jar/war file will be created after building the project.
+
+----------------------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans.xsd 
+  http://www.springframework.org/schema/context/ 
+  http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+</beans>
+
+Whene ever we are creeating a pojo class or bean,then that class data shld be inserted in beans tag.
+
+ApplicationContext ctx1 = new ClassPathXmlApplicationContext("beans.xml");
+//this line will initiate spring ioc container
+//It will start reading the beans.xml file ApplicationContext and then it will allocate memory.
+
+ClassPathXmlApplicationContext is implementation of the interface 
+		MyBean bn = (MyBean) ctx1.getBean("myname");//getbean will fetch/find the bean with name "myname" from memory and assigns the same to bn.
+		bn.display();
+----------------------
+setter injections
+constructor injections
+
+If we wan
+t to initialize any varaible values in a class we can do it in 2 ways.
+1)setter injection---Java bean with setters and getterss
+2)constructor injection---we are going to create a constructor and ar going to initiliza values thru beans.xml.
+>>constrcutors are mainly used for initilizing class level variables.
+>>
+Pojo classes are also called as java beans or business classes.
+>>Till now we are providing metadata in beans.xml file.
+
+In spring we can proivide meta data or configuration data in 3 ways.
+1)xml 
+2)Annotations--recommended
+3)Java config--not recommended
+
+If we want to learn spring properly from basics,xml is right approach.
+
+>>>Every container will have lifecycle phases.
+Human lifecycle:
+birth>>Education>works>marriage>>>death
+
+>>spring jdbc,rom mapper
+spring collections setters and getters
+Bean lifecycle
+scopes
+Spring ORM and spring hibernate
+
+Monday: Spring MVC and AOP basics,rmi
+=======================
+Day3:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
