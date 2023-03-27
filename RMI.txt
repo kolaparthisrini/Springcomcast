@@ -1,0 +1,10 @@
+RMI stands for Remote Method Invocation. It is a mechanism that allows an object residing in one Java container to access/invoke an object running on another Java container (generally on another host, but not necessarily). The Object instances are serialized and send over the network.
+==============================
+
+RMI- Remote Method Invocation - Use RMI to invoke a remote method. The java objects are serialized.
+Hessian- Transfer binary data between the client and the server.
+Burlap- Transfer XML data between the client and the server. It is the XML alternative to Hessian.
+JAX-WS- Java XML API for Web Services.
+Spring’s HTTP invoker- Spring provides a special remoting strategy which allows for Java serialization via HTTP, supporting any Java interface . The corresponding support classes are HttpInvokerProxyFactoryBean and HttpInvokerServiceExporter.
+JMS- Remoting using JMS as the underlying protocol is supported via the JmsInvokerServiceExporter and JmsInvokerProxyFactoryBean classes.
+AMQP- Remoting using AMQP as the underlying protocol is supported by the Spring AMQP project.
